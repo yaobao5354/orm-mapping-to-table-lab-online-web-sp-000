@@ -5,8 +5,9 @@ class Student
   attr_reader :id
   # Remember, you can access your database connection anywhere in this class
   #  with DB[:conn]
-  def initialize(attributes, id = nil)
-    attributes.each {|key, value| self.send(("#{key}="), value)}
+  def initialize(name, grade, id = nil)
+    @name = name
+    @grade = grade
     @id = id
   end
 
@@ -38,7 +39,8 @@ class Student
   end
 
   def self.create(attributes)
-    attributes.each {|key, value| self.send(("#{key}="), value)}
+    student = Student.new(attributes[name:],attributes[grade:])
+    student.save
   end
 
 end
