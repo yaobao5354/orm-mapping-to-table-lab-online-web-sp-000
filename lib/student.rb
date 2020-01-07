@@ -39,8 +39,10 @@ class Student
   end
 
   def self.create(attributes)
-    attributes.each {|key, value| self.send(("#{key}="), value)}
-    binding.pry
+    attributes.each do |key, value|
+      key = self.new(value)
+    end 
+    #attributes.each {|key, value| self.send(("#{key}="), value)}
   end
 
 end
